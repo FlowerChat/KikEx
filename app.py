@@ -34,7 +34,7 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     item = parameters.get("item")
 
-    speech = "Showing item " + item
+    speech = "Showing item 1"
 
     print("Response:")
     print(speech)
@@ -42,11 +42,11 @@ def makeWebhookResult(req):
     kik_message = [
         {
             "type": "text",
-            "body": "Here's the picture of item " + item
+            "body": "Here's the picture of item 1"
         },
         {
             "type": "picture",
-            "picUrl": "https://raw.githubusercontent.com/svet4/apiai-kik-rich-formatting/master/pictures/item" + item +".png"
+            "picUrl": "https://raw.githubusercontent.com/svet4/apiai-kik-rich-formatting/master/pictures/item1".png"
         }
     ]
 
