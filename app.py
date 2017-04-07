@@ -44,10 +44,7 @@ def makeWebhookResult(req):
     print(speech)
 
     kik_message = [
-        {
-            "type": "link"
-            "url": "http://www.fiorita.cz"
-        },
+        
         {
             "type": "link",
             "url": "https://www.google.ru/maps/@50.053619,14.346751,17z"
