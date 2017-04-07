@@ -38,7 +38,7 @@ def makeWebhookResult(req):
     city = parameters.get("City")
     
 
-    speech = "Here are the examples of Florist A work"
+    speech = "https://maps.google.com/maps/contrib/106218555001370292858/photos\"\u003ePeter Hopkins\u003c/a\u003e"
 
     print("Response:")
     print(speech)
