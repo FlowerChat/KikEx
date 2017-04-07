@@ -47,7 +47,7 @@ def makeWebhookResult(req):
         
         {
             "type": "link",
-            "url": "https://www.google.com/maps/contrib/105231077511067622688/photos/@-33.8712996,151.2043516,16z/data=!3m1!4b1!4m3!8m2!3m1!1e1"
+            "url": "https://www.google.com/maps/contrib/105231077511067622688/photos/@-33.8712996,151.2043516,16z/data=!3m1!4b1!4m3!8m2!3m1!1e1&key=AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
         },
         {
             "type": "picture",
