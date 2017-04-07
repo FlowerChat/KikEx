@@ -47,7 +47,7 @@ def makeWebhookResult(req):
         
         {
             "type": "link",
-            "url": "https://www.google.ru/maps/@50.053619,14.346751,17z"
+            "url": "http://www.fiorita.cz"
         },
         {
             "type": "picture",
