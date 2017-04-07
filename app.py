@@ -89,15 +89,7 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "contextOut": [{"name":"choose-florist", "lifespan":2},{"name":"flowerchatline", "lifespan":5}]
     }
-if req.get("result").get("action") != "show.map":
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    address = parameters.get("Address")
-    zipcode = parameters.get("ZipCode")
-    city = parameters.get("City")
-    mapService = GoogleMaps()
-    kik message = 
+
     
 
 
