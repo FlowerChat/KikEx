@@ -28,13 +28,16 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "show.item":
+    if req.get("result").get("action") != "show.florist":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    item = parameters.get("item")
+    address = parameters.get("Address")
+    zipcode = parameters.get("ZipCode")
+    city = parameters.get("City")
+    
 
-    speech = "Showing item 1"
+    speech = "Here are the examples of Florist A work"
 
     print("Response:")
     print(speech)
@@ -42,23 +45,50 @@ def makeWebhookResult(req):
     kik_message = [
         {
             "type": "text",
-            "body": "Here's the picture of item 1"
+            "body": "Here's an example of the Florist A work"
         },
         {
             "type": "picture",
-            "picUrl": "https://raw.githubusercontent.com/svet4/apiai-kik-rich-formatting/master/pictures/item1.png"
+            "picUrl": "http://fiorita.cz/wp-content/uploads/2017/03/kvetinarstvi-praha-jarni-kytice-tulipany-anemony-pryskyrniky.jpg"
+        },
+        {
+            "type": "text",
+            "body": "Here's an example of the Florist B work"
+        },
+        {
+            "type": "picture",
+            "picUrl": "http://fiorita.cz/wp-content/uploads/2017/03/spring-bouquet-jarni-kytka-web.jpg"
+        },
+        {
+            "type": "text",
+            "body": "Please choose Florist A or Florist B",
+            "keyboards":[
+                {"type": "suggested",
+                "responses": [
+                     {
+                         "type": "text",
+                         "body": "Florist A"
+                     },
+                     {
+                         "type": "text",
+                         "body": "Florist B"
+                     }
+                 ]
+                }
+            ]
         }
     ]
 
-    print(json.dumps(kik_message))
 
+    print(json.dumps(kik_message))
     return {
         "speech": speech,
         "displayText": speech,
         "data": {"kik": kik_message},
         # "contextOut": [],
-        "source": "apiai-kik-images"
+        "contextOut": [{"name":"choose-florist", "lifespan":2},{"name":"flowerchatline", "lifespan":5}]
     }
+
 
 
 if __name__ == '__main__':
@@ -66,4 +96,4 @@ if __name__ == '__main__':
 
     print "Starting app on port %d" % port
 
-    app.run(debug=True, port=port, host='0.0.0.0')
+app.run(debug=True, port=port, host='0.0.0.0')
