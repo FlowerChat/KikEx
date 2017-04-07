@@ -46,7 +46,7 @@ def makeWebhookResult(req):
     kik_message = [
         {
             "type": "link"
-            "url": "http://fiorita.cz"
+            "url": "http://www.fiorita.cz"
         },
         {
             "type": "link",
