@@ -7,6 +7,8 @@ import os
 from flask import Flask
 from flask import request
 from flask import make_response
+from googlemaps import GoogleMaps()
+
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -44,8 +46,8 @@ def makeWebhookResult(req):
 
     kik_message = [
         {
-            "type": "text",
-            "body": "Here's an example of the Florist A work"
+            "type": "link",
+            "body": "https://www.google.ru/maps/place/Rooseveltova+892,+160+00+Praha+6-Bubene%C4%8D,+%D0%A7%D0%B5%D1%85%D0%B8%D1%8F/@50.1026226,14.3935174,17z/data=!3m1!4b1!4m5!3m4!1s0x470b952520c3f159:0xbbd95d1f3e105692!8m2!3d50.1026192!4d14.3957061?hl=ru"
         },
         {
             "type": "picture",
@@ -88,6 +90,16 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "contextOut": [{"name":"choose-florist", "lifespan":2},{"name":"flowerchatline", "lifespan":5}]
     }
+if req.get("result").get("action") != "show.map":
+        return {}
+    result = req.get("result")
+    parameters = result.get("parameters")
+    address = parameters.get("Address")
+    zipcode = parameters.get("ZipCode")
+    city = parameters.get("City")
+    mapService = GoogleMaps()
+    kik message = 
+    
 
 
 
