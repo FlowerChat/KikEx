@@ -12,7 +12,7 @@ from flask import request
 from flask import make_response
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-photos_url = "https://maps.googleapis.com/maps/api/place/photo"
+photos_url = "https://maps.googleapis.com/maps/api/place/photo?"
 
 #str = unicode(str, errors='ignore')
 
