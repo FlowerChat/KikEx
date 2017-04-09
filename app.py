@@ -14,7 +14,7 @@ from flask import make_response
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 photos_url = "https://maps.googleapis.com/maps/api/place/photo"
 
-str = unicode(str, errors='ignore')
+#str = unicode(str, errors='ignore')
 
 
 # Flask app should start in global layout
@@ -63,9 +63,13 @@ def makeWebhookResult(req):
     kik_message = [
         
         {
-            "type": "link",
-            "url": img_send
+            "type": "text",
+            "body": img_send
 
+        },
+        {
+            "type": "text",
+            "body": photo_request
         },
         {
             "type": "picture",
