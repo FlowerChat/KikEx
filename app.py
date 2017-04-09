@@ -51,6 +51,8 @@ def makeWebhookResult(req):
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
+
    # photo_payload = {"key" : key, "maxwidth": 1200, "maxhight": 1200, "photoreference" : photo_id}
    # photo_request = requests.get(photos_url, params=photo_payload)
 # img_send = photo_request.content
@@ -67,7 +69,7 @@ def makeWebhookResult(req):
         
         {
             "type": "text",
-            "body": photo_id
+            "body": photo_link
 
         },
        # {
