@@ -68,8 +68,8 @@ def makeWebhookResult(req):
     kik_message = [
         
         {
-            "type": "text",
-            "body": photo_id
+            "type": "link",
+            "url": photo_request
 
         },
        # {
