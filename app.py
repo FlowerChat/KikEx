@@ -63,7 +63,7 @@ def makeWebhookResult(req):
         
         {
             "type": "link",
-            "url": photo_request
+            "url": img_send
 
         },
         {
