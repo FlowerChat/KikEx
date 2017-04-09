@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-import sys
-reload(sys)
-sys.setdefaultencoding("ISO-8859-1")
+
 
 import urllib
 import json
@@ -15,7 +13,7 @@ from flask import request
 from flask import make_response
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-photos_url = "https://maps.googleapis.com/maps/api/place/photo?"
+photos_url = "https://maps.googleapis.com/maps/api/place/photo"
 
 #str = unicode(str, errors='ignore')
 
@@ -58,7 +56,7 @@ def makeWebhookResult(req):
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
     photo_request = requests.get(photos_url, params=photo_payload)
-    img_send = photo_request.content
+    
 
     
 
