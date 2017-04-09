@@ -43,12 +43,13 @@ def makeWebhookResult(req):
     address = parameters.get("Address")
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
-    search_payload = {"key":key, "query":"Kvetinarstvi rooseveltova 49 praha"}
+    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha"}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     photo_payload = {"key" : key, "photoreference" : photo_id}
     photo_request = requests.get(photos_url, params=photo_payload)
+    img_send = photo_request.content
 
     
 
