@@ -44,13 +44,11 @@ def makeWebhookResult(req):
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
     search_payload = {"key":key, "query":"Kvetinarstvi rooseveltova 49 praha"}
-	search_req = requests.get(search_url, params=search_payload)
-	search_json = search_req.json()
-
-	photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
-
-	photo_payload = {"key" : key, "maxwidth" : 1000, "maxwidth" : 1000, "photoreference" : photo_id}
-	photo_request = requests.get(photos_url, params=photo_payload)
+    search_req = requests.get(search_url, params=search_payload)
+    search_json = search_req.json()
+    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    photo_payload = {"key" : key, "maxwidth" : 1000, "maxwidth" : 1000, "photoreference" : photo_id}
+    photo_request = requests.get(photos_url, params=photo_payload)
 
     
 
@@ -65,7 +63,7 @@ def makeWebhookResult(req):
         {
             "type": "link",
             "url": photos_url
-            
+
         },
         {
             "type": "picture",
