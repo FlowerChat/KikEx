@@ -44,13 +44,16 @@ def makeWebhookResult(req):
     address = parameters.get("Address")
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
-    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha", "radius": "1000"}
+    
+    #trying to retrieve pics
+    
+    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha", "radius": 1000}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
-    photo_payload = {"key" : key, "maxwidth": 1200, "maxhight": 1200, "photoreference" : photo_id}
-    photo_request = requests.get(photos_url, params=photo_payload)
-    img_send = photo_request.content
+   # photo_payload = {"key" : key, "maxwidth": 1200, "maxhight": 1200, "photoreference" : photo_id}
+   # photo_request = requests.get(photos_url, params=photo_payload)
+# img_send = photo_request.content
 
     
 
@@ -64,13 +67,13 @@ def makeWebhookResult(req):
         
         {
             "type": "text",
-            "body": img_send
+            "body": photo_id
 
         },
-        {
-            "type": "text",
-            "body": photo_request
-        },
+       # {
+       #     "type": "text",
+       #     "body": photo_request
+       # },
         {
             "type": "picture",
             "picUrl": "http://fiorita.cz/wp-content/uploads/2017/03/kvetinarstvi-praha-jarni-kytice-tulipany-anemony-pryskyrniky.jpg"
