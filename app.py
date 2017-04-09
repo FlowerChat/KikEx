@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+import sys
+reload(sys)
+sys.setdefaultencoding("ISO-8859-1")
 
 import urllib
 import json
