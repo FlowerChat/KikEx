@@ -55,7 +55,7 @@ def makeWebhookResult(req):
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
     photo_request = requests.get(photos_url, params=photo_payload)
-# img_send = photo_request.content
+    img_send = photo_request.content
 
     
 
@@ -69,7 +69,7 @@ def makeWebhookResult(req):
         
         {
             "type": "link",
-            "url": photo_request
+            "url": img_send
 
         },
        # {
