@@ -14,6 +14,7 @@ from flask import make_response
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 photos_url = "https://maps.googleapis.com/maps/api/place/photo"
 
+str = unicode(str, errors='ignore')
 
 
 # Flask app should start in global layout
@@ -43,7 +44,7 @@ def makeWebhookResult(req):
     address = parameters.get("Address")
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
-    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha"}
+    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha", "radius": "1000"}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
