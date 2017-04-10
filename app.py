@@ -70,7 +70,7 @@ def makeWebhookResult(req):
         
         {
             "type": "picture",
-            "picUrl": img_send
+            "picUrl": "https://lh4.googleusercontent.com/-1wzlVdxiW14/USSFZnhNqxI/AAAAAAAABGw/YpdANqaoGh4/s1600-w400/Google%2BSydney"
 
         },
        # {
