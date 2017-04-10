@@ -56,7 +56,7 @@ def makeWebhookResult(req):
     
     #trying to retrieve pics
     
-    search_payload = {"key":key, "query":"Kvetinarstvi+rooseveltova+49+praha", "radius": 1000}
+    search_payload = {"key":key, "query": address, "radius": 1500}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
