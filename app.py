@@ -45,6 +45,9 @@ def makeWebhookResult(req):
     address = parameters.get("Address")
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
+    amp = str("&")
+    ques= str("?")
+    
     
     #trying to retrieve pics
     
