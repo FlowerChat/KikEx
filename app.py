@@ -51,12 +51,14 @@ def makeWebhookResult(req):
     photo_width=str("maxwidth=1600")
     key_eq=str("key=")
     key_str=str(key)
+    str_address=str(address)
+    
     
     
     
     #trying to retrieve pics
     
-    search_payload = {"key":key, "query":address, "radius": 1500}
+    search_payload = {"key":key, "query":str_address, "radius": 1500}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
