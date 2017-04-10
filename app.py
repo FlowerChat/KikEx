@@ -47,6 +47,11 @@ def makeWebhookResult(req):
     city = parameters.get("City")
     amp = str("&")
     ques= str("?")
+    photo_ref = str("photoreference=")
+    photo_width=str("maxwidth=1600")
+    key_eq=str("key=")
+    key_str=str(key)
+    
     
     
     #trying to retrieve pics
@@ -59,6 +64,7 @@ def makeWebhookResult(req):
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
     photo_request = requests.get(photos_url, params=photo_payload)
+    final_pic=photos_url+ques+photo_width+photo_ref+key_eq+key_str
     
 
     
@@ -73,7 +79,8 @@ def makeWebhookResult(req):
         
         {
             "type": "picture",
-            "picUrl": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
+            "picUrl": final_pic
+            #"picUrl": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
         },
         
             # {
