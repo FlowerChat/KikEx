@@ -43,8 +43,8 @@ def webhook():
 def makeWebhookResult(req):
     if req.get("result").get("action") != "show.florist":
         return {}
-    result1 = req.get("result")
-    parameters = result1.get("parameters")
+    result = req.get("result")
+    parameters = result.get("parameters")
     address = parameters.get("Address")
     zipcode = parameters.get("ZipCode")
     city = parameters.get("City")
@@ -70,13 +70,15 @@ def makeWebhookResult(req):
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
-    photo_id = details_json["result"][0]["photos"][1]["photo_reference"]
-    #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    #photo_id = details_json["result"][0]["photos"][1]["photo_reference"]
+    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
     photo_request = requests.get(photos_url, params=photo_payload)
-    final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
+    final_pic=str(photo_request)
+    
+    #final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
     
     
 
