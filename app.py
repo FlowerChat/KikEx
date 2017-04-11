@@ -74,8 +74,8 @@ def makeWebhookResult(req):
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
-    #photo_id = details_json["result"]["photos"][1]["photo_reference"]
-    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    photo_id = details_json["result"]["photos"][1]["photo_reference"]
+    #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
