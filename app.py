@@ -70,6 +70,7 @@ def makeWebhookResult(req):
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
+    str_details=str(details_json)
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
