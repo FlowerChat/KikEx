@@ -104,7 +104,7 @@ def makeWebhookResult(req):
         
              {
             "type": "text",
-            "body": str_gplace
+            "body": gplace_id
         },
         {
             "type": "picture",
