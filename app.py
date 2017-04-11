@@ -14,6 +14,9 @@ from flask import make_response
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 photos_url = "https://maps.googleapis.com/maps/api/place/photo"
+details_url = "https://maps.googleapis.com/maps/api/place/details/json"
+
+
 
 #str = unicode(str, errors='ignore')
 
@@ -52,6 +55,7 @@ def makeWebhookResult(req):
     key_eq=str("key=")
     key_str=str(key)
     str_address="florist at"+str(address)
+
     
     
     
@@ -62,7 +66,12 @@ def makeWebhookResult(req):
     search_payload = {"key":key, "query":str_address, "radius": 1500}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
-    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    gplace_id=search_json["results"][0][place_id][0]
+    details_payload={"key":key, "placeid":gplace_id}
+    details_req=requests.get(details_url, params=details_payload)
+    details_json=details_req.json()
+    photo_id = details_json["result"][0]["photos"][1]["photo_reference"]
+    #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
@@ -141,5 +150,4 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
     print "Starting app on port %d" % port
-
 app.run(debug=True, port=port, host='0.0.0.0')
