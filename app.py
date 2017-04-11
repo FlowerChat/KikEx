@@ -70,7 +70,7 @@ def makeWebhookResult(req):
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
-    str_gplace=str(gplace_id)
+    
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
@@ -104,7 +104,7 @@ def makeWebhookResult(req):
         
              {
             "type": "text",
-            "body": gplace_id
+            "body": photo_id
         },
         {
             "type": "picture",
