@@ -70,8 +70,8 @@ def makeWebhookResult(req):
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
-    #photo_id = details_json["result"][0]["photos"][1]["photo_reference"]
-    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    photo_id = details_json["photos"][1]["photo_reference"]
+    #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
