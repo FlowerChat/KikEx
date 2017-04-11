@@ -63,14 +63,14 @@ def makeWebhookResult(req):
     
     #trying to retrieve pics
     
-    search_payload = {"key":key, "query":str_address, "radius": 1500}
+    search_payload = {"key":key, "query":str_address, "radius": 10000}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     gplace_id=search_json["results"][0]["place_id"][0]
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
-    str_details=str(details_req)
+    str_gplace=str(gplace_id)
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
@@ -104,7 +104,7 @@ def makeWebhookResult(req):
         
              {
             "type": "text",
-            "body": str_details
+            "body": str_gplace
         },
         {
             "type": "picture",
