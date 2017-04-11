@@ -104,7 +104,7 @@ def makeWebhookResult(req):
         
              {
             "type": "text",
-            "body": photo_id
+            "body": "test"
         },
         {
             "type": "picture",
