@@ -70,8 +70,11 @@ def makeWebhookResult(req):
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
-    photo_id = details_json{["result"]["photos"][1]["photo_reference"]}
-    #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+    webadd=details_json["result"]["website"]
+    webadd_str=str(webadd)
+    
+    #photo_id = details_json["result"]["photos"][1]["photo_reference"]
+    photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
     photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
@@ -98,10 +101,10 @@ def makeWebhookResult(req):
             #"picUrl": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
         },
         
-            # {
-       #     "type": "text",
-       #     "body": photo_request
-        #},
+             {
+            "type": "text",
+            "body": webadd_str
+        },
         {
             "type": "picture",
             "picUrl": "http://fiorita.cz/wp-content/uploads/2017/03/kvetinarstvi-praha-jarni-kytice-tulipany-anemony-pryskyrniky.jpg"
