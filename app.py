@@ -66,7 +66,7 @@ def makeWebhookResult(req):
     search_payload = {"key":key, "query":str_address, "radius": 10000}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
-    gplace_id=search_json["results"][0]["place_id"]
+    gplace_id=search_json["results"][1]["place_id"]
     details_payload={"key":key, "placeid":gplace_id}
     details_req=requests.get(details_url, params=details_payload)
     details_json=details_req.json()
