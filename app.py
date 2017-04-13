@@ -85,6 +85,9 @@ def makeWebhookResult(req):
 
     website0=details_json["result"]["website"]
     website1=details_json2["result"]["website"]
+    hwebsite0="http://"+website0
+    hwebsite1="http://"+website1
+
 
 
     #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
@@ -114,19 +117,19 @@ def makeWebhookResult(req):
             "picUrl": final_pic  
 
         },
-        {
-            "type": "link"
-            "url": website0
-        },
+        #{
+            #"type": "link"
+            #"url": hwebsite0
+        #},
         
         {
             "type": "picture",
             "picUrl": final_pic2
         },
-        {
-            "type": "link"
-            "url": website1
-        },
+        #{
+            #"type": "link"
+            #"url": hwebsite1
+        #},
         {
             "type": "text",
             "body": "Please choose Florist A or Florist B",
