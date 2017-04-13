@@ -67,14 +67,22 @@ def makeWebhookResult(req):
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
     gplace_id=search_json["results"][0]["place_id"]
+    gplace_id2=search_json["results"][1]["place_id"]
     details_payload={"key":key, "placeid":gplace_id}
+    details_payload2={"key":key, "placeid":gplace_id2}
     details_req=requests.get(details_url, params=details_payload)
+    details_req2=requests.get(details_url, params=details_payload2)
     details_json=details_req.json()
+    details_json2=details_req2.json()
+
+
     
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
-    photo_id = details_json["result"]["photos"][1]["photo_reference"]
+    photo_id = details_json["result"]["photos"][3]["photo_reference"]
+    photo_id2=details_json2["result"]["photos"][3]["photo_reference"]
+
     #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
@@ -83,6 +91,7 @@ def makeWebhookResult(req):
     #final_pic=str(photo_request)
     
     final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
+    final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyAb7Vnq1nSojwYd1TarHx_x6Gb4ti8bhVo"
     
     
 
@@ -103,8 +112,8 @@ def makeWebhookResult(req):
         },
         
         {
-            "type": "text",
-            "body": "test"
+            "type": "picture",
+            "picUrl": final_pic2
         },
         {
             "type": "text",
