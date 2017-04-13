@@ -83,6 +83,10 @@ def makeWebhookResult(req):
     photo_id = details_json["result"]["photos"][3]["photo_reference"]
     photo_id2=details_json2["result"]["photos"][3]["photo_reference"]
 
+    website0=details_json["result"]["website"]
+    website1=details_json2["result"]["website"]
+
+
     #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
@@ -110,10 +114,18 @@ def makeWebhookResult(req):
             "picUrl": final_pic  
 
         },
+        {
+            "type": "link"
+            "url": website0
+        },
         
         {
             "type": "picture",
             "picUrl": final_pic2
+        },
+        {
+            "type": "link"
+            "url": website1
         },
         {
             "type": "text",
