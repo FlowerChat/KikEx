@@ -125,15 +125,15 @@ def makeWebhookResult(req):
 
         },
         {
-            "type": "text"
+            "type": "text",
             "body": name_shop1
         },
         {
-            "type": "text"
+            "type": "text",
             "body": "phone: " + phone_shop1
         },
         {
-            "type": "text"
+            "type": "text",
             "body": "address: "+form_add1
         },
             
