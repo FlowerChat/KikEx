@@ -126,12 +126,12 @@ def makeWebhookResult(req):
         },
         {
             "type": "text",
-            "body": name_shop1
+            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1
         },
-        {
-            "type": "text",
-            "body": "phone: " + phone_shop1
-        },
+        #{
+         #   "type": "text",
+          #  "body": "phone: " + phone_shop1
+        #},
         #{
            # "type": "text",
             #"body": "address: "+form_add1
@@ -146,6 +146,12 @@ def makeWebhookResult(req):
             "type": "picture",
             "picUrl": final_pic2
         },
+        {
+            "type": "text",
+            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2
+        },
+        {
+            
         #{
             #"type": "link"
             #"url": hwebsite1
