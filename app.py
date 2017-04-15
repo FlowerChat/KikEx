@@ -82,6 +82,13 @@ def makeWebhookResult(req):
     
     photo_id = details_json["result"]["photos"][1]["photo_reference"]
     photo_id2=details_json2["result"]["photos"][1]["photo_reference"]
+    name_shop1=details_json["result"]["name"]
+    name_shop2=details_json2["result"]["name"]
+    phone_shop1=details_json["result"]["international_phone_number"]
+    phone_shop2=details_json2["result"]["international_phone_number"]
+    form_add1=details_json["result"]["formatted_address"]
+    form_add2=details_json2["result"]["formatted_address"]
+    
 
     #website0=details_json["result"]["website"]
     #website1=details_json2["result"]["website"]
@@ -117,6 +124,19 @@ def makeWebhookResult(req):
             "picUrl": final_pic  
 
         },
+        {
+            "type": "text"
+            "body": name_shop1
+        },
+        {
+            "type": "text"
+            "body": "phone: " + phone_shop1
+        },
+        {
+            "type": "text"
+            "body": "address: "+form_add1
+        },
+            
         #{
             #"type": "link"
             #"url": hwebsite0
