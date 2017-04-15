@@ -80,8 +80,8 @@ def makeWebhookResult(req):
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
-    photo_id = details_json["result"]["photos"][3]["photo_reference"]
-    photo_id2=details_json2["result"]["photos"][2]["photo_reference"]
+    photo_id = details_json["result"]["photos"][1]["photo_reference"]
+    photo_id2=details_json2["result"]["photos"][1]["photo_reference"]
 
     #website0=details_json["result"]["website"]
     #website1=details_json2["result"]["website"]
