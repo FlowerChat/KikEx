@@ -132,10 +132,10 @@ def makeWebhookResult(req):
             "type": "text",
             "body": "phone: " + phone_shop1
         },
-        {
-            "type": "text",
-            "body": "address: "+form_add1
-        },
+        #{
+           # "type": "text",
+            #"body": "address: "+form_add1
+        #},
             
         #{
             #"type": "link"
