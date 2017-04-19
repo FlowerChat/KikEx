@@ -11,6 +11,9 @@ from key import key
 import imghdr
 from flask import request
 from flask import make_response
+import psycopg2
+
+
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 photos_url = "https://maps.googleapis.com/maps/api/place/photo"
@@ -46,8 +49,11 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     address = parameters.get("Address")
-    zipcode = parameters.get("ZipCode")
-    city = parameters.get("City")
+    ID=parameters.get("id")
+    TimeStamp=parameters.get("timestamp")
+    CustName=parameters.get("CustName")
+    CustPhone=parameters.get("CustPhone")
+    TypeofSale=parameters.get("TypeofSale")
     amp = str("&")
     ques= str("?")
     photo_ref = str("photoreference=")
@@ -106,6 +112,14 @@ def makeWebhookResult(req):
     
     final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
     final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
+
+    #database filling
+    db=psycopg2.connect(host="ec2-23-21-96-70.compute-1.amazonaws.com", dbname="d3cob9nu3ccmj5", user="enxlywbbucislp", password="fb2061f2d11f190a74770c77cc82cb676609952326cb5566236df137f3d182fb")
+    cur=db.cursor
+    cur.execute("INSERT INTO FlowerChat(ID, TimeStamp) VALUES (ID, TimeStamp)")
+    db.commit()
+    cur.close()
+    db.close()
     
     
 
@@ -164,11 +178,11 @@ def makeWebhookResult(req):
                 "responses": [
                      {
                          "type": "text",
-                         "body": "Florist A"
+                         "body": name_shop1
                      },
                      {
                          "type": "text",
-                         "body": "Florist B"
+                         "body": name_shop2
                      }
                  ]
                 }
