@@ -52,7 +52,7 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     address = parameters.get("Address")
-    IDchat=parameters.get("id")
+    #IDchat=parameters.get("id")
     TimeStamp=parameters.get("timestamp")
     CustName=parameters.get("CustName")
     CustPhone=parameters.get("CustPhone")
