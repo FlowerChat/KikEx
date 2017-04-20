@@ -6,17 +6,12 @@ import json
 import os
 
 from flask import Flask, render_template, jsonify
-from flask.ext.sqlalchemy import SQLAlchemy
-
-
 import requests
 from key import key
 import imghdr
 from flask import request
 from flask import make_response
 import psycopg2
-import psycopg2.extensions
-
 
 
 
@@ -54,7 +49,7 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     address = parameters.get("Address")
-    IDchat=parameters.get("id")
+    ID=parameters.get("id")
     TimeStamp=parameters.get("timestamp")
     CustName=parameters.get("CustName")
     CustPhone=parameters.get("CustPhone")
@@ -119,14 +114,10 @@ def makeWebhookResult(req):
     final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
 
     #database filling
-    #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-    #db = SQLAlchemy(app)
-
     db=psycopg2.connect(host="ec2-23-21-96-70.compute-1.amazonaws.com", dbname="d3cob9nu3ccmj5", user="enxlywbbucislp", password="fb2061f2d11f190a74770c77cc82cb676609952326cb5566236df137f3d182fb")
-    #db.create_all()
     cur=db.cursor()
-    cur.execute("INSERT INTO FlowerChat(ID, TimeStamp) VALUES (IDchat, TimeStamp)")
-    
+    cur.execute("INSERT INTO public."FlowerChat"(ID, TimeStamp) VALUES (ID, TimeStamp)")
+    db.create_all()
 
     db.commit()
     cur.close()
