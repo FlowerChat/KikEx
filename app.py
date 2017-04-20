@@ -116,7 +116,7 @@ def makeWebhookResult(req):
     #database filling
     db=psycopg2.connect(host="ec2-23-21-96-70.compute-1.amazonaws.com", dbname="d3cob9nu3ccmj5", user="enxlywbbucislp", password="fb2061f2d11f190a74770c77cc82cb676609952326cb5566236df137f3d182fb")
     cur=db.cursor()
-    cur.execute("INSERT INTO enxlywbbucislp.FlowerChat(ID, TimeStamp) VALUES (ID, TimeStamp)")
+    cur.execute("INSERT INTO enxlywbbucislp FlowerChat(ID, TimeStamp) VALUES (ID, TimeStamp)")
     db.create_all()
 
     db.commit()
