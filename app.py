@@ -6,7 +6,8 @@ import json
 import os
 
 from flask import Flask, render_template, jsonify
-import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
+
 
 import requests
 from key import key
