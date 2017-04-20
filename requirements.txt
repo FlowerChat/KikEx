@@ -1,4 +1,5 @@
 Flask==0.10.1
 requests==2.13.0
 psycopg==2.7.1
+flask-sqlalchemy
 
