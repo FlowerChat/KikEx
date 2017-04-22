@@ -114,7 +114,7 @@ def makeWebhookResult(req):
     final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
 
     #database filling
-    db=psycopg2.connect(host="ec2-23-21-96-70.compute-1.amazonaws.com", dbname="d3cob9nu3ccmj5", user="enxlywbbucislp", password="fb2061f2d11f190a74770c77cc82cb676609952326cb5566236df137f3d182fb")
+    db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute("INSERT INTO public.flowerchattable(SessID, TimeStamp) VALUES (ID, TimeStamp)")
     db.create_all()
