@@ -182,11 +182,15 @@ def makeWebhookResult(req):
                 "responses": [
                      {
                          "type": "text",
-                         "body": name_shop1
+                         "body": "Florist A"
                      },
                      {
                          "type": "text",
-                         "body": name_shop2
+                         "body": "Florist B"
+                     },
+                     {
+                         "type": "text",
+                         "body": TimeStamp
                      }
                  ]
                 }
