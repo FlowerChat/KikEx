@@ -119,7 +119,7 @@ def makeWebhookResult(req):
     cur.execute(
         """INSERT INTO public.flowerchattable(sessid, timestamp) VALUES (%s, %s);""",
         (ChatID, TimeStamp))
-    db.create_all()
+    #db.create_all()
 
     db.commit()
     cur.close()
