@@ -12,6 +12,7 @@ import imghdr
 from flask import request
 from flask import make_response
 import psycopg2
+import datetime
 
 
 
@@ -49,9 +50,9 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     address = parameters.get("Address")
-    ChatID=str(parameters.get("id"))
-    #ChatID=str(ID)
-    TimeStamp=str(parameters.get("timestamp"))
+    
+    TimeStamp=str(datetime.datetime.utcnow())
+
     #strTimeStamp=str(TimeStamp)
     CustName=parameters.get("CustName")
     CustPhone=parameters.get("CustPhone")
@@ -119,8 +120,8 @@ def makeWebhookResult(req):
     db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute(
-        """INSERT INTO public.flowerchattable(idsession, timestamp) VALUES (%s, %s);""",
-        (address, "TimeStamp"))
+        """INSERT INTO public.flowerchattable(timestamp, custname, custnumber) VALUES (%s, %s, %s);""",
+        (TimeStamp, CustName, CustPhone))
     #db.create_all()
 
     db.commit()
