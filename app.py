@@ -48,7 +48,7 @@ def makeWebhookResult(req):
     
     if req.get("result").get("action") != "show.florist":
         return {}
-    sessid = str(req.get("id"))
+    sessid = req.get("id")
     result = req.get("result")   
     parameters = result.get("parameters")
     address = parameters.get("Address")
@@ -56,8 +56,8 @@ def makeWebhookResult(req):
     TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
-    CustName=str(parameters.get("CustName"))
-    CustPhone=str(parameters.get("CustPhone"))
+    CustName=parameters.get("CustName")
+    CustPhone=parameters.get("CustPhone")
     TypeofSale=parameters.get("TypeofSale")
     amp = str("&")
     ques= str("?")
@@ -122,7 +122,7 @@ def makeWebhookResult(req):
     db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute(
-        """INSERT INTO public.flowerchattable(timestamp, custname, custnumber, sessid) VALUES (%s, %s, %s);""",
+        """INSERT INTO public.flowerchattable(timestamp, custname, custnumber, sessid) VALUES (%s, %s, %s, %s);""",
         (TimeStamp, CustName, CustPhone, sessid))
     #db.create_all()
 
