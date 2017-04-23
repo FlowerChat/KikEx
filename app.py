@@ -54,7 +54,7 @@ def makeWebhookResult(req):
     flowerchatline=contexts[1]
 
     conparams=flowerchatline.get("parameters")
-    CustName-conparams.get("CustName")
+    CustName=conparams.get("CustName")
 
     parameters = result.get("parameters")
     address = parameters.get("Address")
