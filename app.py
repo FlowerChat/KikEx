@@ -166,7 +166,7 @@ def makeWebhookResult(req):
         },
         {
             "type": "text",
-            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2
+            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2+ChatID
         },
         
             
@@ -187,10 +187,6 @@ def makeWebhookResult(req):
                      {
                          "type": "text",
                          "body": "Florist B"
-                     },
-                     {
-                         "type": "text",
-                         "body": TimeStamp
                      }
                  ]
                 }
