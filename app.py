@@ -58,7 +58,7 @@ def makeWebhookResult(req):
 
     parameters = result.get("parameters")
     address = parameters.get("Address")
-    flowerchatline=req.json()
+    #flowerchatline=req.json()
     #CustName=flowerchatline["result"]["contexts"][1]["CustName"]
 
     
