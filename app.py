@@ -49,14 +49,23 @@ def makeWebhookResult(req):
     if req.get("result").get("action") != "show.florist":
         return {}
     sessid = req.get("id")
-    result = req.get("result")   
+    result = req.get("result")
+    contexts=result.get("contexts")
+    flowerchatline=contexts["name"][1]
+
+    conparams=flowerchatline.get("parameters")
+    CustName-conparams.get("CustName")
+    
     parameters = result.get("parameters")
     address = parameters.get("Address")
+    flowerchatline=req.json()
+    #CustName=flowerchatline["result"]["contexts"][1]["CustName"]
+
     
     TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
-    CustName=parameters.get("CustName")
+    
     CustPhone=parameters.get("CustPhone")
     TypeofSale=parameters.get("TypeofSale")
     amp = str("&")
