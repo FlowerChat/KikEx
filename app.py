@@ -54,8 +54,8 @@ def makeWebhookResult(req):
     TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
-    CustName=parameters.get("CustName")
-    CustPhone=parameters.get("CustPhone")
+    CustName=str(parameters.get("CustName"))
+    CustPhone=str(parameters.get("CustPhone"))
     TypeofSale=parameters.get("TypeofSale")
     amp = str("&")
     ques= str("?")
