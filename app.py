@@ -45,17 +45,19 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
+    
     if req.get("result").get("action") != "show.florist":
         return {}
-    result = req.get("result")
+    sessid = str(req.get("id"))
+    result = req.get("result")   
     parameters = result.get("parameters")
     address = parameters.get("Address")
     
     TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
-    CustName=str(parameters.get("CustName"))
-    CustPhone=str(parameters.get("CustPhone"))
+    CustName=parameters.get("CustName")
+    CustPhone=parameters.get("CustPhone")
     TypeofSale=parameters.get("TypeofSale")
     amp = str("&")
     ques= str("?")
@@ -147,7 +149,7 @@ def makeWebhookResult(req):
         },
         {
             "type": "text",
-            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1+CustName
+            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1+sessid
         },
         #{
          #   "type": "text",
