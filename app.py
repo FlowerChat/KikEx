@@ -147,7 +147,7 @@ def makeWebhookResult(req):
         },
         {
             "type": "text",
-            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1
+            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1+CustName
         },
         #{
          #   "type": "text",
@@ -169,7 +169,7 @@ def makeWebhookResult(req):
         },
         {
             "type": "text",
-            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2+ChatID
+            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2
         },
         
             
