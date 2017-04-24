@@ -55,6 +55,8 @@ def makeWebhookResult(req):
 
     conparams=flowerchatline.get("parameters")
     CustName=conparams.get("CustName")
+    CustPhone=conparams.get("CustPhone")
+    
 
     parameters = result.get("parameters")
     address = parameters.get("Address")
@@ -131,8 +133,8 @@ def makeWebhookResult(req):
     db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute(
-        """INSERT INTO public.flowerchattable(timestamp, custname, custnumber, sessid) VALUES (%s, %s, %s, %s);""",
-        (TimeStamp, CustName, CustPhone, sessid))
+        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone) VALUES (%s, %s, %s, %s);""",
+        (sessid, TimeStamp, CustName, CustPhone))
     #db.create_all()
 
     db.commit()
