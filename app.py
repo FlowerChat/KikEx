@@ -73,8 +73,8 @@ def makeWebhookResult(req):
 
     #strTimeStamp=str(TimeStamp)
     
-    CustPhone=parameters.get("CustPhone")
-    TypeofSale=strparameters.get("TypeofSale")
+    #CustPhone=parameters.get("CustPhone") mistake!
+    #TypeofSale=parameters.get("TypeofSale") mistake!
     amp = str("&")
     ques= str("?")
     photo_ref = str("photoreference=")
