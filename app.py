@@ -140,6 +140,10 @@ def makeWebhookResult(req):
     cur.execute(
         """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s, %s, %s);""",
         (sessid, TimeStamp, CustName, CustPhone, TypeofSale))
+    cur.execute(
+        """INSERT INTO public.flowerchattable(custphone, typeofsale) VALUES (%s, %s);""",
+    (CustPhone,TypeofSale))
+    )
     #db.create_all()
 
     db.commit()
@@ -222,7 +226,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         "data": {"kik": kik_message},
         # "contextOut": [],
-        "contextOut": [{"name":"choose-florist", "lifespan":2},{"name":"flowerchatline", "lifespan":5}]
+        "contextOut": [{"name":"flowerchatline", "lifespan":5},{"name":"choose-florist", "lifespan":1}]
     }
 
     
