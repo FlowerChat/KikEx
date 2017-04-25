@@ -49,6 +49,7 @@ def makeWebhookResult(req):
     if req.get("result").get("action") != "show.florist":
         return {}
     sessid = req.get("id")
+    TimeStamp=req.get("timestamp")
     result = req.get("result")
     contexts=result.get("contexts")
     flowerchatline=contexts[1]
@@ -67,7 +68,7 @@ def makeWebhookResult(req):
     #CustName=flowerchatline["result"]["contexts"][1]["CustName"]
 
     
-    TimeStamp=str(datetime.datetime.utcnow())
+    #TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
     
