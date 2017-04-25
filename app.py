@@ -49,7 +49,7 @@ def makeWebhookResult(req):
     if req.get("result").get("action") != "show.florist":
         return {}
     sessid = req.get("id")
-    TimeStamp=req.get("timestamp")
+    #TimeStamp=req.get("timestamp")
     result = req.get("result")
     contexts=result.get("contexts")
     flowerchatline=contexts[1]
@@ -58,6 +58,7 @@ def makeWebhookResult(req):
     
     CustPhone=str(conparams.get("CustPhone"))
     CustName=conparams.get("CustName")
+    TypeofSale=contexts.get("TypeofSale")
     
 
 
@@ -68,7 +69,7 @@ def makeWebhookResult(req):
     #CustName=flowerchatline["result"]["contexts"][1]["CustName"]
 
     
-    #TimeStamp=str(datetime.datetime.utcnow())
+    TimeStamp=str(datetime.datetime.utcnow())
 
     #strTimeStamp=str(TimeStamp)
     
@@ -137,8 +138,8 @@ def makeWebhookResult(req):
     db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute(
-        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone) VALUES (%s, %s, %s, %s);""",
-        (sessid, TimeStamp, CustName, CustPhone))
+        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s, %s, %s);""",
+        (sessid, TimeStamp, CustName, CustPhone, TypeofSale))
     #db.create_all()
 
     db.commit()
