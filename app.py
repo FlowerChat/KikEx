@@ -58,7 +58,7 @@ def makeWebhookResult(req):
     
     CustPhone=str(conparams.get("CustPhone"))
     CustName=conparams.get("CustName")
-    TypeofSale=contexts.get("TypeofSale")
+    TypeofSale=conparams.get("TypeofSale")
     
 
 
