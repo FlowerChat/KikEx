@@ -138,7 +138,7 @@ def makeWebhookResult(req):
     db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
     cur=db.cursor()
     cur.execute(
-        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s,%s, %s);""",
+        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s, %s, %s);""",
         (sessid, TimeStamp, CustName, CustPhone, TypeofSale))
     
     #db.create_all()
