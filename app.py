@@ -46,42 +46,40 @@ def webhook():
 
 def makeWebhookResult(req):
     
-    if req.get("result").get("action") != "show.florist":
-        return {}
-    sessid = req.get("id")
-    #TimeStamp=req.get("timestamp")
-    result = req.get("result")
-    contexts=result.get("contexts")
-    flowerchatline=contexts[1]
-
-    conparams=flowerchatline.get("parameters")
+    if req.get("result").get("action") == "show.florist":
+        sessid = req.get("id")
     
-    CustPhone=conparams.get("CustPhone")
-    CustName=conparams.get("CustName")
-    TypeofSale=conparams.get("TypeofSale")
+        result = req.get("result")
+        contexts=result.get("contexts")
+        flowerchatline=contexts[1]
+
+        conparams=flowerchatline.get("parameters")
+    
+        CustPhone=conparams.get("CustPhone")
+        CustName=conparams.get("CustName")
+        TypeofSale=conparams.get("TypeofSale")
     
 
 
 
-    parameters = result.get("parameters")
-    address = parameters.get("Address")
-    #flowerchatline=req.json()
-    #CustName=flowerchatline["result"]["contexts"][1]["CustName"]
-
+        parameters = result.get("parameters")
+        address = parameters.get("Address")
     
-    TimeStamp=str(datetime.datetime.utcnow())
+    
+        TimeStamp=str(datetime.datetime.utcnow())
 
-    #strTimeStamp=str(TimeStamp)
+     
     
     #CustPhone=parameters.get("CustPhone") mistake!
     #TypeofSale=parameters.get("TypeofSale") mistake!
-    amp = str("&")
-    ques= str("?")
-    photo_ref = str("photoreference=")
-    photo_width=str("maxwidth=1600")
-    key_eq=str("key=")
-    key_str=str(key)
-    str_address="florist at"+str(address)
+    
+        amp = str("&")
+        ques= str("?")
+        photo_ref = str("photoreference=")
+        photo_width=str("maxwidth=1600")
+        key_eq=str("key=")
+        key_str=str(key)
+        str_address="florist at"+str(address)
 
     
     
@@ -90,31 +88,31 @@ def makeWebhookResult(req):
     
     #trying to retrieve pics
     
-    search_payload = {"key":key, "query":str_address, "radius": 10000}
-    search_req = requests.get(search_url, params=search_payload)
-    search_json = search_req.json()
-    gplace_id=search_json["results"][0]["place_id"]
-    gplace_id2=search_json["results"][1]["place_id"]
-    details_payload={"key":key, "placeid":gplace_id}
-    details_payload2={"key":key, "placeid":gplace_id2}
-    details_req=requests.get(details_url, params=details_payload)
-    details_req2=requests.get(details_url, params=details_payload2)
-    details_json=details_req.json()
-    details_json2=details_req2.json()
+        search_payload = {"key":key, "query":str_address, "radius": 10000}
+        search_req = requests.get(search_url, params=search_payload)
+        search_json = search_req.json()
+        gplace_id=search_json["results"][0]["place_id"]
+        gplace_id2=search_json["results"][1]["place_id"]
+        details_payload={"key":key, "placeid":gplace_id}
+        details_payload2={"key":key, "placeid":gplace_id2}
+        details_req=requests.get(details_url, params=details_payload)
+        details_req2=requests.get(details_url, params=details_payload2)
+        details_json=details_req.json()
+        details_json2=details_req2.json()
 
 
     
     #webadd=details_json["result"]["website"]
     #webadd_str=str(webadd)
     
-    photo_id = details_json["result"]["photos"][1]["photo_reference"]
-    photo_id2=details_json2["result"]["photos"][1]["photo_reference"]
-    name_shop1=details_json["result"]["name"]
-    name_shop2=details_json2["result"]["name"]
-    phone_shop1=details_json["result"]["international_phone_number"]
-    phone_shop2=details_json2["result"]["international_phone_number"]
-    form_add1=details_json["result"]["formatted_address"]
-    form_add2=details_json2["result"]["formatted_address"]
+        photo_id = details_json["result"]["photos"][1]["photo_reference"]
+        photo_id2=details_json2["result"]["photos"][1]["photo_reference"]
+        name_shop1=details_json["result"]["name"]
+        name_shop2=details_json2["result"]["name"]
+        phone_shop1=details_json["result"]["international_phone_number"]
+        phone_shop2=details_json2["result"]["international_phone_number"]
+        form_add1=details_json["result"]["formatted_address"]
+        form_add2=details_json2["result"]["formatted_address"]
     
 
     #website0=details_json["result"]["website"]
@@ -127,47 +125,47 @@ def makeWebhookResult(req):
     #photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
     #photo_link=photos_url+"?maxwidth=1600"+"&"+"photoreference="+photo_id+"&"+key
     
-    photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
-    photo_request = requests.get(photos_url, params=photo_payload)
+        photo_payload = {"key" : key, "maxwidth": 1600, "maxhight": 1600, "photoreference" : photo_id}
+        photo_request = requests.get(photos_url, params=photo_payload)
     #final_pic=str(photo_request)
     
-    final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
-    final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
+        final_pic=photos_url+ques+photo_width+amp+photo_ref+photo_id+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
+        final_pic2=photos_url+ques+photo_width+amp+photo_ref+photo_id2+amp+key_eq+"AIzaSyD8pgLKrEDnUYBoGVvpw0B4dT4qAyHaRXg"
 
     #database filling
-    db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
-    cur=db.cursor()
-    cur.execute(
-        """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s, %s, %s);""",
-        (sessid, TimeStamp, CustName, CustPhone, TypeofSale))
+        db=psycopg2.connect(host="ec2-54-235-181-120.compute-1.amazonaws.com", dbname="dfgsds81qmj1m8", user="kvziloygxjkgdk", password="b47e268477aef14509ad98d05b99a7078d4a18bc82862b3796844fef65ea7367")
+        cur=db.cursor()
+        cur.execute(
+            """INSERT INTO public.flowerchattable(sessid, timestamp, custname, custphone, typeofsale) VALUES (%s, %s, %s, %s, %s);""",
+            (sessid, TimeStamp, CustName, CustPhone, TypeofSale))
     
     #db.create_all()
 
-    db.commit()
-    cur.close()
-    db.close()
+        db.commit()
+        cur.close()
+        db.close()
     
     
 
     
 
-    speech = "Here are the pictures of florists' work"
+        speech = "Here are the pictures of florists' work"
 
 
-    print("Response:")
-    print(speech)
+        print("Response:")
+        print(speech)
 
-    kik_message = [
+        kik_message = [
         
-        {
-            "type": "picture",
-            "picUrl": final_pic  
+            {
+                "type": "picture",
+                "picUrl": final_pic  
 
-        },
-        {
-            "type": "text",
-            "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1
-        },
+            },
+            {
+                "type": "text",
+                "body": name_shop1+", phone: "+phone_shop1+", adress: "+form_add1
+            },
         #{
          #   "type": "text",
           #  "body": "phone: " + phone_shop1
@@ -182,49 +180,51 @@ def makeWebhookResult(req):
             #"url": hwebsite0
         #},
         
-        {
-            "type": "picture",
-            "picUrl": final_pic2
-        },
-        {
-            "type": "text",
-            "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2
-        },
+            {
+                "type": "picture",
+                "picUrl": final_pic2
+            },
+            {
+                "type": "text",
+                "body": name_shop2+", phone: "+phone_shop2+", adress: "+form_add2
+            },
         
             
         #{
             #"type": "link"
             #"url": hwebsite1
         #},
-        {
-            "type": "text",
-            "body": "Please choose Florist A or Florist B",
-            "keyboards":[
-                {"type": "suggested",
-                "responses": [
-                     {
-                         "type": "text",
-                         "body": "Florist A"
-                     },
-                     {
-                         "type": "text",
-                         "body": "Florist B"
-                     }
-                 ]
-                }
-            ]
-        }
-    ]
+            {
+                "type": "text",
+                "body": "Please choose Florist A or Florist B",
+                "keyboards":[
+                    {"type": "suggested",
+                    "responses": [
+                         {
+                             "type": "text",
+                             "body": "Florist A"
+                         },
+                         {
+                             "type": "text",
+                             "body": "Florist B"
+                         }
+                      ]
+                    }
+                ]
+            }
+        ]
 
 
-    print(json.dumps(kik_message))
-    return {
-        "speech": speech,
-        "displayText": speech,
-        "data": {"kik": kik_message},
+        print(json.dumps(kik_message))
+        return {
+            "speech": speech,
+            "displayText": speech,
+            "data": {"kik": kik_message},
         # "contextOut": [],
-        "contextOut": [{"name":"flowerchatline", "lifespan":5},{"name":"choose-florist", "lifespan":1}]
-    }
+            "contextOut": [{"name":"flowerchatline", "lifespan":5},{"name":"choose-florist", "lifespan":1}]
+        }
+    return {}
+    
 
     
 
